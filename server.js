@@ -1,8 +1,15 @@
 const express = require('express');
+const connctDB = require('./config/db')
 
 const app =  express();
 
-app.get('/', (req, res) => res.json ({msg: 'welcome to the conract keeper API'}));
+// connnect database
+connctDB();
+
+// int middleware
+app.use(express.json({ extended: false}));
+
+app.get('/', (req, res) => res.json ({msg: 'welcome to the contact keeper API'}));
 
 
 
